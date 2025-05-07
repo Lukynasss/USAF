@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Technika – Americké letectvo</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0d0d;
+            color: white;
+        }
+
+        header {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .tech-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .tech-item {
+            background-color: #1f1f1f;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .tech-item .content {
+            padding: 20px;
+        }
+
+        .tech-item h3 {
+            margin: 0 0 10px;
+            font-size: 22px;
+        }
+
+        .tech-item p {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #4da6ff;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 99;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #1a1a1a;
+            margin: 5% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .modal-text {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🛩️ Technika letectva</h1>
+        <p>Klikni na stroj pro detailní zobrazení</p>
+    </header>
+
+    <div class="tech-list">
+        <div class="tech-item" onclick="openModal('images/f16.png', 'F-16 Fighting Falcon je víceúčelový stíhací letoun schopný jak vzdušného boje, tak útoků na pozemní cíle. Výzbroj zahrnuje AIM-120, AIM-9 a GBU pumy.')">
+            <img src="images/f16.png" alt="F-16">
+            <div class="content">
+                <h3>F-16 Fighting Falcon</h3>
+                <p>Klikni pro zobrazení detailu</p>
+            </div>
+        </div>
+
+        <div class="tech-item" onclick="openModal('images/c130.jpg', 'C-130 Hercules je víceúčelové transportní letadlo, určené pro přepravu vojáků, nákladu nebo humanitární pomoc. Je nasazován ve více než 70 zemích.')">
+            <img src="images/c130.jpg" alt="C-130">
+            <div class="content">
+                <h3>C-130 Hercules</h3>
+                <p>Klikni pro zobrazení detailu</p>
+            </div>
+        </div>
+
+        <div class="tech-item" onclick="openModal('images/f35.jpg', 'F-35 Lightning II je nejmodernější stealth víceúčelový letoun 5. generace. Disponuje pokročilou avionikou, schopností vertikálního vzletu (ve verzi B) a výzbrojí pro vzdušné i pozemní cíle.')">
+            <img src="images/f35.jpg" alt="F-35 Lightning II">
+            <div class="content">
+                <h3>F-35 Lightning II</h3>
+                <p>Klikni pro zobrazení detailu</p>
+            </div>
+        </div>
+        
+        <div class="tech-item" onclick="openModal('images/f15.jpg', 'F-15 Eagle je osvědčený nadzvukový stíhací letoun navržený pro vzdušnou převahu. Dosahuje rychlosti přes Mach 2.5 a má vynikající poměr tahu k hmotnosti.')">
+            <img src="images/f15.jpg" alt="F-15 Eagle">
+            <div class="content">
+                <h3>F-15 Eagle</h3>
+                <p>Klikni pro zobrazení detailu</p>
+            </div>
+        </div>        
+
+        <div class="tech-item" onclick="openModal('images/f22.jpg', 'F-22 Raptor je stealth stíhací letoun 5. generace určený k získání vzdušné nadvlády. Je vysoce manévrovatelný a vybavený pokročilou avionikou.')">
+            <img src="images/f22.jpg" alt="F-22 Raptor">
+            <div class="content">
+                <h3>F-22 Raptor</h3>
+                <p>Klikni pro zobrazení detailu</p>
+            </div>
+        </div>
+        
+        <div class="tech-item" onclick="openModal('images/f18.jpg', 'F/A-18 Hornet je víceúčelový stíhací letoun používaný námořnictvem a námořní pěchotou. Vyznačuje se robustní konstrukcí a spolehlivostí při operacích z letadlových lodí.')">
+            <img src="images/f18.jpg" alt="F/A-18 Hornet">
+            <div class="content">
+                <h3>F/A-18 Hornet</h3>
+                <p>Klikni pro zobrazení detailu</p>
+            </div>
+        </div>
+    
+        <div class="tech-item" onclick="openModal('images/a10.jpg', 'A-10 Thunderbolt II, přezdívaný „Warthog“, je útočné letadlo vyvinuté pro podporu pozemních sil. Známý svým 30mm kanónem GAU-8 Avenger.')">
+            <img src="images/a10.jpg" alt="A-10 Thunderbolt II">
+            <div class="content">
+                <h3>A-10 Thunderbolt II</h3>
+                <p>Klikni pro zobrazení detailu</p>
+            </div>
+        </div>
+    
+    
+    <a class="back" href="index.html">← Zpět na hlavní stránku</a>
+
+    <!-- Modal Window -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation();">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="Detail obrázku">
+            <div id="modal-text" class="modal-text"></div>
+        </div>
+    </div>
+
+    <!-- Modal Script -->
+    <script>
+        function openModal(imageSrc, text) {
+            document.getElementById('modal-img').src = imageSrc;
+            document.getElementById('modal-text').innerHTML = text;
+            document.getElementById('modal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+    </script>
+
+</body>
+</html>

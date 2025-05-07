@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Americké letectvo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('images/f16.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            position: relative;
+            text-shadow: 1px 1px 4px black;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .buttons {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .buttons a button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #2e6da4;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buttons a button:hover {
+            background-color: #204d74;
+        }
+
+        /* Kulatá loga v horních rozích */
+        .logo-left, .logo-right {
+            position: absolute;
+            top: 20px;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .logo-left {
+            left: 20px;
+        }
+
+        .logo-right {
+            right: 20px;
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 { font-size: 32px; }
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+
+        .author-credit {
+            position: fixed;
+            right: 10px;
+            bottom: 5px;
+            font-size: 12px;
+            color: #ccc;
+            font-style: italic;
+            font-weight: bold; /* Přidáno pro ztučnění */
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Kulatá loga -->
+    <img src="images/logo-left.png" alt="Logo Air Force" class="logo-left">
+    <img src="images/logo-right.png" alt="Logo Air Force" class="logo-right">
+
+    <div class="overlay">
+        <h1>Oficiální stránky taktického letectva ze základny Fort Zancudo</h1>
+        <p>Přidej se k elitním silám! Prohlédni si naši galerii, vyplň formulář nebo se seznam s technikou.</p>
+
+        <div class="buttons">
+            <a href="galerie.html"><button>Galerie</button></a>
+            <a href="formular.html"><button>Formulář</button></a>
+            <a href="technika.html"><button>Technika</button></a>
+        </div>
+        
+        <div class="author-credit">Vytvořil: Lukynasss </div>
+    
+    </div>
+</body>
+</html>

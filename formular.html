@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulář – Americké letectvo</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0d0d;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #2e6da4;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #204d74;
+        }
+
+        a.back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #4da6ff;
+            text-decoration: none;
+        }
+
+        a.back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>✍️ Přihláška do letectva</h1>
+        <form
+        action="https://formspree.io/f/mpwdrpby"
+        method="POST"
+        >
+            <label for="jmeno">Jméno a příjmení:</label>
+            <input type="text" id="jmeno" name="jmeno" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="vek">Věk:</label>
+            <input type="number" id="vek" name="vek" min="18" max="60" required>
+
+            <label for="zprava">Proč máš zájem se stát součástí USAF:</label>
+            <textarea id="zprava" name="zprava" rows="4" required></textarea>
+
+            <input type="submit" value="Odeslat přihlášku">
+        </form>
+
+        <a class="back" href="index.html">← Zpět na hlavní stránku</a>
+    </div>
+
+</body>
+</html>
