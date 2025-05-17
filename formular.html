@@ -76,10 +76,7 @@
 
     <div class="form-container">
         <h1>✍️ Přihláška do letectva</h1>
-        <form
-        action="https://formspree.io/f/mpwdrpby"
-        method="POST"
-        >
+        <form id="usaf-form" action="" method="POST">
             <label for="jmeno">Jméno a příjmení:</label>
             <input type="text" id="jmeno" name="jmeno" required>
 
@@ -97,6 +94,49 @@
 
         <a class="back" href="index.html">← Zpět na hlavní stránku</a>
     </div>
+
+    <script>
+        document.getElementById("usaf-form").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const webhookURL = "https://discord.com/api/webhooks/1369776306216108093/LKJArA0bdplhRzHGpZ1dt7OtdoBXb9X4kAikBj889TO0A1oGdG8GlubD0xp_UREJ5pz7"; // <<< Nahraď svým webhookem URL
+            const formData = new FormData(this);
+
+            let message = "**📨 Nová přihláška do USAF**\n\n";
+
+            const fields = [
+                { label: "🆔 Jméno a příjmení", value: formData.get("jmeno") },
+                { label: "📅 Discord", value: formData.get("discord") },
+                { label: "🎖️ Věk", value: formData.get("vek") },
+                { label: "✍️ Proč máš zájem o USAF", value: formData.get("zprava") }
+            ];
+
+            fields.forEach(field => {
+                message += `**${field.label}:** ${field.value}\n`;
+            });
+
+            const payload = {
+                content: message
+            };
+
+            try {
+                const res = await fetch(webhookURL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (res.ok) {
+                    alert("Formulář byl úspěšně odeslán.");
+                    this.reset();
+                } else {
+                    alert("Chyba při odesílání do Discordu.");
+                }
+            } catch (err) {
+                alert("Chyba: " + err.message);
+            }
+        });
+    </script>
 
 </body>
 </html>
