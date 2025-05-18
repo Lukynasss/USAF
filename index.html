@@ -1,128 +1,188 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <title>Americké letectvo</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <title>Americké letectvo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: url('images/f16.png') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            height: 100vh;
-            position: relative;
-            text-shadow: 1px 1px 4px black;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.6);
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 50px;
-            text-align: center;
-        }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Rajdhani', sans-serif;
+      color: white;
+    }
 
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
+    #bgVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.5);
+    }
 
-        p {
-            font-size: 20px;
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
+    .overlay {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+      position: relative;
+    }
 
-        .buttons {
-            position: absolute;
-            bottom: 40px;
-            display: flex;
-            gap: 20px;
-        }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .buttons a button {
-            padding: 15px 30px;
-            font-size: 18px;
-            background-color: #2e6da4;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    h1 {
+      font-size: 52px;
+      letter-spacing: 2px;
+      color: #00bfff;
+      text-shadow: 1px 1px 10px black;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
 
-        .buttons a button:hover {
-            background-color: #204d74;
-        }
+    p {
+      font-size: 20px;
+      max-width: 700px;
+      margin-bottom: 50px;
+      color: #ddd;
+      text-shadow: 1px 1px 3px black;
+    }
 
-        /* Kulatá loga v horních rozích */
-        .logo-left, .logo-right {
-            position: absolute;
-            top: 20px;
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
+    .buttons {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      z-index: 10;
+    }
 
-        .logo-left {
-            left: 20px;
-        }
+    .buttons a button {
+      position: relative;
+      padding: 15px 35px;
+      font-size: 18px;
+      background: linear-gradient(145deg, #1e90ff, #104e8b);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
 
-        .logo-right {
-            right: 20px;
-        }
+    .buttons a button::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
 
-        @media screen and (max-width: 600px) {
-            h1 { font-size: 32px; }
-            .buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-        }
+    .buttons a button:hover::after {
+      left: 100%;
+    }
 
-        .author-credit {
-            position: fixed;
-            right: 10px;
-            bottom: 5px;
-            font-size: 12px;
-            color: #ccc;
-            font-style: italic;
-            font-weight: bold; /* Přidáno pro ztučnění */
-            opacity: 0.7;
-        }
-    </style>
+    .buttons a button:hover {
+      transform: scale(1.05) translateY(-2px);
+    }
+
+    .logo-left, .logo-right {
+      position: absolute;
+      top: 20px;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-left:hover, .logo-right:hover {
+      transform: scale(1.1);
+    }
+
+    .logo-left {
+      left: 20px;
+    }
+
+    .logo-right {
+      right: 20px;
+    }
+
+    .author-credit {
+      position: fixed;
+      bottom: 10px;
+      right: 15px;
+      font-size: 12px;
+      font-style: italic;
+      font-weight: bold;
+      color: #ccc;
+      opacity: 0.75;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 { font-size: 32px; }
+      p { font-size: 18px; }
+      .buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Kulatá loga -->
-    <img src="images/logo-left.png" alt="Logo Air Force" class="logo-left">
-    <img src="images/logo-right.png" alt="Logo Air Force" class="logo-right">
+  <!-- Video background -->
+  <video autoplay muted loop playsinline id="bgVideo">
+    <source src="video.mp4" type="video/mp4">
+    Tvůj prohlížeč nepodporuje video pozadí.
+  </video>
 
-    <div class="overlay">
-        <h1>Oficiální stránky taktického letectva ze základny Fort Zancudo</h1>
-        <p>Přidej se k elitním silám! Prohlédni si naši galerii, vyplň formulář nebo se seznam s technikou.</p>
+  <!-- Loga -->
+  <img src="images/logo-left.png" alt="Logo" class="logo-left">
+  <img src="images/logo-right.png" alt="Logo" class="logo-right">
 
-        <div class="buttons">
-            <a href="galerie.html"><button>Galerie</button></a>
-            <a href="formular.html"><button>Formulář</button></a>
-            <a href="technika.html"><button>Technika</button></a>
-        </div>
-        
-        <div class="author-credit">Vytvořil: Lukynasss </div>
+  <!-- Overlay obsah -->
+  <div class="overlay">
+    <h1>Americké letectvo – Fort Zancudo</h1>
+    <p>Přidej se k elitním silám! Prohlédni si naši galerii, vyplň formulář nebo se seznam s technikou.</p>
     
+    <div class="buttons">
+      <a href="galerie.html"><button>Galerie</button></a>
+      <a href="formular.html"><button>Formulář</button></a>
+      <a href="technika.html"><button>Technika</button></a>
     </div>
+
+    <div class="author-credit">Vytvořil: Lukynasss</div>
+  </div>
+
 </body>
 </html>
