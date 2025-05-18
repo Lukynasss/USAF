@@ -22,13 +22,14 @@
             border-radius: 12px;
             max-width: 500px;
             width: 100%;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
         }
 
         h1 {
             text-align: center;
             margin-bottom: 30px;
             font-size: 28px;
+            text-shadow: 1px 1px 4px black;
         }
 
         label {
@@ -70,12 +71,13 @@
         a.back:hover {
             text-decoration: underline;
         }
+
     </style>
 </head>
 <body>
 
     <div class="form-container">
-        <h1>✍️ Přihláška do letectva</h1>
+        <h1>Přihláška do letectva</h1>
         <form id="usaf-form" action="" method="POST">
             <label for="jmeno">Jméno a příjmení:</label>
             <input type="text" id="jmeno" name="jmeno" required>
@@ -102,13 +104,13 @@
             const webhookURL = "https://discord.com/api/webhooks/1369776306216108093/LKJArA0bdplhRzHGpZ1dt7OtdoBXb9X4kAikBj889TO0A1oGdG8GlubD0xp_UREJ5pz7"; // <<< Nahraď svým webhookem URL
             const formData = new FormData(this);
 
-            let message = "**📨 Nová přihláška do USAF**\n\n";
+            let message = "**Nová přihláška do USAF**\n\n";
 
             const fields = [
-                { label: "🆔 Jméno a příjmení", value: formData.get("jmeno") },
-                { label: "📅 Discord", value: formData.get("discord") },
-                { label: "🎖️ Věk", value: formData.get("vek") },
-                { label: "✍️ Proč máš zájem o USAF", value: formData.get("zprava") }
+                { label: "Jméno a příjmení", value: formData.get("jmeno") },
+                { label: "Discord", value: formData.get("discord") },
+                { label: "Věk", value: formData.get("vek") },
+                { label: "Proč máš zájem o USAF", value: formData.get("zprava") }
             ];
 
             fields.forEach(field => {
