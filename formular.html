@@ -118,8 +118,11 @@
             });
 
             const payload = {
-                content: message
-            };
+  jmeno: formData.get("jmeno"),
+  discord: formData.get("discord"),
+  vek: formData.get("vek"),
+  zprava: formData.get("zprava")
+};
 
             try {
                 const res = await fetch(webhookURL, {
@@ -142,6 +145,7 @@
 
 </body>
 </html>
+
 
 
 
