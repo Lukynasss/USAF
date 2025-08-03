@@ -101,22 +101,17 @@
         document.getElementById("usaf-form").addEventListener("submit", async function(e) {
             e.preventDefault();
 
-            const webhookURL = "https://hook.eu2.make.com/fdcsjmikxfw8dqfnose62xvkz11hji7b"; // <-- Tento URL od Make webhooku
+            const webhookURL = "https://hook.eu2.make.com/fdcsjmikxfw8dqfnose62xvkz11hji7b"; // Tento URL od Make webhooku
             const formData = new FormData(this);
 
-            let message = "**Nová přihláška do USAF**\n\n";
+            // Přímo napíšeme hodnoty, které chceme odeslat do Make
+            let message = `**Nová přihláška do USAF**\n\n`;
+            message += `**Jméno a příjmení:** ${formData.get("jmeno")}\n`;
+            message += `**Discord:** ${formData.get("discord")}\n`;
+            message += `**Věk:** ${formData.get("vek")}\n`;
+            message += `**Proč máš zájem o USAF:** ${formData.get("zprava")}\n`;
 
-            const fields = [
-                { label: "Jméno a příjmení", value: formData.get("jmeno") },
-                { label: "Discord", value: formData.get("discord") },
-                { label: "Věk", value: formData.get("vek") },
-                { label: "Proč máš zájem o USAF", value: formData.get("zprava") }
-            ];
-
-            fields.forEach(field => {
-                message += `**${field.label}:** ${field.value}\n`;
-            });
-
+            // Odeslání webhooku do Make
             const payload = {
                 content: message // Tento content půjde do Discordu jako text
             };
